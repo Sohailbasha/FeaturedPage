@@ -15,30 +15,29 @@ class FeaturedMoviesViewModel {
     private let apiKey = "5ebb337b273ad9b825fef4a0ce371b65"
     private let secret = "e49ffa10429c0cd1"
     
-    var featuredMovies: Response? {
-        didSet {
-            print(featuredMovies!)
-        }
-    }
-    
     init(featuredViewController: FeaturedViewController) {
         self.featuredViewController = featuredViewController
     }
     
-    func fetchFeaturedMoviesFromMockServer() {
-        getMoviesList { (featuredMovies) in
-            print(featuredMovies.photos.moviesList)
+    func fetchFeaturedMoviesFromMockServer(numberOfCategories: Int) {
+        
+        var featuredMovies: [[Movie]] = []
+        
+        for i in 0...numberOfCategories {
+            getMoviesList(page: i) { (response) in
+                featuredMovies.append(response.photos.moviesList)
+            }
         }
-        // TODO: return an array of arrays
+    
     }
     
-    private func getMoviesList(completion: @escaping (_ featuredMovies: Response) -> Void) {
-        // TODO: return array
+    private func getMoviesList(page: Int, completion: @escaping (_ featuredMovies: Response) -> Void) {
         let parameters = ["format":"json",
                           "api_key":apiKey,
                           "nojsoncallback":"1",
                           "method":"flickr.interestingness.getList",
                           "per_page":"5",
+                          "page":"\(page)",
                           "extras":"url_z"]
         
         guard let baseUrl = URL(string: baseUrlString) else { return }
@@ -52,15 +51,10 @@ class FeaturedMoviesViewModel {
             guard let data = data else {
                 return
             }
-            
-//            guard let featuredMovies = try? self.decoder.decode(Response.self, from: data) else {
-//                return
-//            }
-            
+
             guard let response = try? self.decoder.decode(Response.self, from: data) else {
                 return
             }
-            
             
             completion(response)
         }
@@ -70,5 +64,4 @@ class FeaturedMoviesViewModel {
         let decoder = JSONDecoder()
         return decoder
     }
-
 }
