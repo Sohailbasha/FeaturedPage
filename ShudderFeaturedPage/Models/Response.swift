@@ -9,13 +9,10 @@
 import Foundation
 
 struct Response: Codable {
-    let photos: Photos
     
+    let photos: Photos
     
     enum CodingKeys: String, CodingKey {
         case photos = "photos"
     }
 }
-
-
-
