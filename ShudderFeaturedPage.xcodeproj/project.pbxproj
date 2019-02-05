@@ -97,8 +97,8 @@
 				FD3314C82209278500A7A502 /* Views */,
 				FD3314D0220A213B00A7A502 /* ViewModels */,
 				FD3314CB220A0D7B00A7A502 /* Networking */,
-				FD3314A72209057700A7A502 /* Main.storyboard */,
 				FD3314AA2209057800A7A502 /* Assets.xcassets */,
+				FD3314A72209057700A7A502 /* Main.storyboard */,
 				FD3314AC2209057800A7A502 /* LaunchScreen.storyboard */,
 				FD3314AF2209057800A7A502 /* Info.plist */,
 			);
