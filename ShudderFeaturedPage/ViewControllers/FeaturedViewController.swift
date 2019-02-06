@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FeaturedViewController: UIViewController {
     
@@ -58,6 +59,12 @@ extension FeaturedViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCollectionViewCell
+        let movie = featuredMoviesViewModel.movies[collectionView.tag].moviesList[indexPath.row]
+        guard let moviePosterUrl = URL(string: movie.urlZ) else { return UICollectionViewCell() }
+        let resource = ImageResource(downloadURL: moviePosterUrl, cacheKey: movie.urlZ)
+        movieCell?.imageView.kf.setImage(with: resource)
         return movieCell ?? UICollectionViewCell()
     }
+    
+    
 }
