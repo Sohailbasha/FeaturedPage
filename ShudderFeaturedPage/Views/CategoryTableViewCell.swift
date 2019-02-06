@@ -17,6 +17,7 @@ class CategoryTableViewCell: UITableViewCell {
         moviesCollectionView.dataSource = datasourceDelegate
         moviesCollectionView.delegate = datasourceDelegate
         moviesCollectionView.tag = row
+        moviesCollectionView.reloadData()
     }
     
     func setCategoryLabel(text: String) {
