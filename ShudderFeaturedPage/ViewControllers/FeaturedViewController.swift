@@ -9,18 +9,18 @@
 import UIKit
 import Kingfisher
 
-class FeaturedViewController: UIViewController {
+class FeaturedViewController: UIViewController, Storyboarded {
     
     @IBOutlet var categoriesTableView: UITableView!
     var featuredMoviesViewModel: FeaturedMoviesViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.1215686275, blue: 0.1333333333, alpha: 1)
+
         featuredMoviesViewModel = FeaturedMoviesViewModel(featuredViewController: self)
         featuredMoviesViewModel.fetchFeaturedMoviesFromMockServer(numberOfCategories: 4)
 
-        self.view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.1215686275, blue: 0.1333333333, alpha: 1)
-        
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
         categoriesTableView.backgroundColor = .clear
@@ -68,6 +68,4 @@ extension FeaturedViewController: UICollectionViewDelegate, UICollectionViewData
         movieCell?.imageView.kf.setImage(with: resource)
         return movieCell ?? UICollectionViewCell()
     }
-    
-    
 }

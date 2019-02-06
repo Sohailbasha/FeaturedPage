@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1C63912332AC490FEF6C4545 /* Pods_ShudderFeaturedPage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A00CD7D293B3E4CE75615C /* Pods_ShudderFeaturedPage.framework */; };
 		3B4E5765A575F00A6F160290 /* Pods_ShudderFeaturedPageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C6C00C85A70DCD889292084 /* Pods_ShudderFeaturedPageTests.framework */; };
+		FD0B0BDD220B39D40042F7B1 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0B0BDC220B39D40042F7B1 /* Storyboarded.swift */; };
+		FD0B0BDF220B3A460042F7B1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0B0BDE220B3A460042F7B1 /* Coordinator.swift */; };
+		FD0B0BE1220B3A9E0042F7B1 /* FeaturedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0B0BE0220B3A9E0042F7B1 /* FeaturedCoordinator.swift */; };
 		FD3314A42209057700A7A502 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3314A32209057700A7A502 /* AppDelegate.swift */; };
 		FD3314A92209057700A7A502 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3314A72209057700A7A502 /* Main.storyboard */; };
 		FD3314AB2209057800A7A502 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3314AA2209057800A7A502 /* Assets.xcassets */; };
@@ -41,6 +44,9 @@
 		D7EE484ACB5BF8214B270FBE /* Pods-ShudderFeaturedPageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShudderFeaturedPageTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShudderFeaturedPageTests/Pods-ShudderFeaturedPageTests.release.xcconfig"; sourceTree = "<group>"; };
 		D97661B38FE5EBF3BEA51D3A /* Pods-ShudderFeaturedPage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShudderFeaturedPage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShudderFeaturedPage/Pods-ShudderFeaturedPage.debug.xcconfig"; sourceTree = "<group>"; };
 		DF5F37A852206DE0A3A06BD0 /* Pods-ShudderFeaturedPage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShudderFeaturedPage.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShudderFeaturedPage/Pods-ShudderFeaturedPage.release.xcconfig"; sourceTree = "<group>"; };
+		FD0B0BDC220B39D40042F7B1 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		FD0B0BDE220B3A460042F7B1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		FD0B0BE0220B3A9E0042F7B1 /* FeaturedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCoordinator.swift; sourceTree = "<group>"; };
 		FD3314A02209057700A7A502 /* ShudderFeaturedPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShudderFeaturedPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3314A32209057700A7A502 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD3314A82209057700A7A502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,6 +106,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FD0B0BE2220B3B300042F7B1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FD0B0BDC220B39D40042F7B1 /* Storyboarded.swift */,
+				FD0B0BE3220B3B3E0042F7B1 /* Coordinators */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FD0B0BE3220B3B3E0042F7B1 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				FD0B0BDE220B3A460042F7B1 /* Coordinator.swift */,
+				FD0B0BE0220B3A9E0042F7B1 /* FeaturedCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		FD3314972209057700A7A502 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +153,7 @@
 				FD3314D0220A213B00A7A502 /* ViewModels */,
 				FD3314C82209278500A7A502 /* Views */,
 				FD3314CB220A0D7B00A7A502 /* Networking */,
+				FD0B0BE2220B3B300042F7B1 /* Protocols */,
 				FD3314AA2209057800A7A502 /* Assets.xcassets */,
 				FD3314A72209057700A7A502 /* Main.storyboard */,
 				FD3314AC2209057800A7A502 /* LaunchScreen.storyboard */,
@@ -404,7 +429,10 @@
 				FD3314D5220A23E100A7A502 /* Response.swift in Sources */,
 				FD3314CF220A164300A7A502 /* FeaturedMoviesViewModel.swift in Sources */,
 				FD3314CA220A0D6200A7A502 /* NetworkLogic.swift in Sources */,
+				FD0B0BDF220B3A460042F7B1 /* Coordinator.swift in Sources */,
 				FD3314CD220A158700A7A502 /* MovieCollectionViewCell.swift in Sources */,
+				FD0B0BE1220B3A9E0042F7B1 /* FeaturedCoordinator.swift in Sources */,
+				FD0B0BDD220B39D40042F7B1 /* Storyboarded.swift in Sources */,
 				FD3314A42209057700A7A502 /* AppDelegate.swift in Sources */,
 				FD3314C72209278100A7A502 /* CategoryTableViewCell.swift in Sources */,
 			);
@@ -572,7 +600,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XFHGVA942A;
 				INFOPLIST_FILE = ShudderFeaturedPage/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = sohail.ShudderFeaturedPage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -588,7 +619,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XFHGVA942A;
 				INFOPLIST_FILE = ShudderFeaturedPage/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = sohail.ShudderFeaturedPage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -605,7 +639,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XFHGVA942A;
 				INFOPLIST_FILE = ShudderFeaturedPageTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = sohail.ShudderFeaturedPageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -623,7 +661,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XFHGVA942A;
 				INFOPLIST_FILE = ShudderFeaturedPageTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = sohail.ShudderFeaturedPageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
