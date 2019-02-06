@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet private weak var categoryLabel: UILabel!
     @IBOutlet private weak var moviesCollectionView: UICollectionView!
     
     func setCollectionViewDatasourceDelegate(datasourceDelegate: UICollectionViewDataSource & UICollectionViewDelegate, forRow row: Int) {
