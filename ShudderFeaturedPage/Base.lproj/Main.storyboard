@@ -48,8 +48,24 @@
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="97" height="146"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WMg-Ze-BHh">
+                                                                        <rect key="frame" x="3" y="4" width="91" height="138"/>
+                                                                    </imageView>
+                                                                </subviews>
                                                             </view>
                                                             <color key="backgroundColor" red="0.99916535620000002" green="0.88149447660000002" blue="0.2180766317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="WMg-Ze-BHh" secondAttribute="bottom" constant="4" id="BrW-U3-hJa"/>
+                                                                <constraint firstItem="WMg-Ze-BHh" firstAttribute="centerY" secondItem="xTO-lX-WOf" secondAttribute="centerY" id="HGH-Wx-D75"/>
+                                                                <constraint firstItem="WMg-Ze-BHh" firstAttribute="top" secondItem="xTO-lX-WOf" secondAttribute="top" constant="4" id="boY-CZ-2BY"/>
+                                                                <constraint firstAttribute="trailing" secondItem="WMg-Ze-BHh" secondAttribute="trailing" constant="3" id="dL1-Mi-6hw"/>
+                                                                <constraint firstItem="WMg-Ze-BHh" firstAttribute="leading" secondItem="xTO-lX-WOf" secondAttribute="leading" constant="3" id="qnd-La-pkx"/>
+                                                                <constraint firstItem="WMg-Ze-BHh" firstAttribute="centerX" secondItem="xTO-lX-WOf" secondAttribute="centerX" id="vMx-0r-bYJ"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="imageView" destination="WMg-Ze-BHh" id="0s2-Eh-5Re"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>

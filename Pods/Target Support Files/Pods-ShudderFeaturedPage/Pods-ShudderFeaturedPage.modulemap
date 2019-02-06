@@ -1,0 +1,6 @@
+framework module Pods_ShudderFeaturedPage {
+  umbrella header "Pods-ShudderFeaturedPage-umbrella.h"
+
+  export *
+  module * { export * }
+}
