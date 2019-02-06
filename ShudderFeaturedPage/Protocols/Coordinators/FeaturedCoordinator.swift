@@ -22,6 +22,4 @@ class FeaturedCoordinator: Coordinator {
         let viewController = FeaturedViewController.instantiate()
         navigationController.pushViewController(viewController, animated: false)
     }
-    
-    
 }

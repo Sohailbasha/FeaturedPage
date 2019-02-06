@@ -11,6 +11,9 @@ import Kingfisher
 
 class FeaturedViewController: UIViewController, Storyboarded {
     
+    let kCategoryCell = "categoryCell"
+    let kMovieCell = "movieCell"
+    
     @IBOutlet var categoriesTableView: UITableView!
     var featuredMoviesViewModel: FeaturedMoviesViewModel!
     
@@ -43,7 +46,7 @@ extension FeaturedViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let categoryCell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as? CategoryTableViewCell
+        let categoryCell = tableView.dequeueReusableCell(withIdentifier: kCategoryCell, for: indexPath) as? CategoryTableViewCell
         return categoryCell ?? UITableViewCell()
     }
     
@@ -61,10 +64,11 @@ extension FeaturedViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCollectionViewCell
+        let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: kMovieCell, for: indexPath) as? MovieCollectionViewCell
         let movie = featuredMoviesViewModel.movies[collectionView.tag].moviesList[indexPath.row]
         guard let moviePosterUrl = URL(string: movie.urlZ) else { return UICollectionViewCell() }
         let resource = ImageResource(downloadURL: moviePosterUrl, cacheKey: movie.urlZ)
+        movieCell?.imageView.kf.indicatorType = .activity
         movieCell?.imageView.kf.setImage(with: resource)
         return movieCell ?? UICollectionViewCell()
     }
