@@ -10,12 +10,17 @@ import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet private weak var moviesCollectionView: UICollectionView!
     
     func setCollectionViewDatasourceDelegate(datasourceDelegate: UICollectionViewDataSource & UICollectionViewDelegate, forRow row: Int) {
         moviesCollectionView.dataSource = datasourceDelegate
         moviesCollectionView.delegate = datasourceDelegate
         moviesCollectionView.tag = row
+    }
+    
+    func setCategoryLabel(text: String) {
+        categoryLabel.text = text
     }
 
 }

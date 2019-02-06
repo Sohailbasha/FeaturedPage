@@ -54,6 +54,7 @@ extension FeaturedViewController: UITableViewDataSource, UITableViewDelegate {
         guard let categoryCell = cell as? CategoryTableViewCell else { return }
         categoryCell.backgroundColor = .clear
         categoryCell.setCollectionViewDatasourceDelegate(datasourceDelegate: self, forRow: indexPath.row)
+        categoryCell.setCategoryLabel(text: "category \(indexPath.row)")
     }
 }
 
