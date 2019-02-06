@@ -16,24 +16,27 @@ class FeaturedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         featuredMoviesViewModel = FeaturedMoviesViewModel(featuredViewController: self)
-        
+        featuredMoviesViewModel.fetchFeaturedMoviesFromMockServer(numberOfCategories: 4)
+
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
         categoriesTableView.backgroundColor = .blue
-        
-        featuredMoviesViewModel.fetchFeaturedMoviesFromMockServer()
-
     }
-    
-    let model: [[Int]] = [[1, 2], [3, 4, 5], [1]]
-    
+}
 
+extension FeaturedViewController: FeaturedMoviesViewModelDelegate {
+    
+    func didFetchMovies() {
+        DispatchQueue.main.async {
+            self.categoriesTableView.reloadData()
+        }
+    }
 }
 
 extension FeaturedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
+        return featuredMoviesViewModel.movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,10 +48,10 @@ extension FeaturedViewController: UITableViewDataSource, UITableViewDelegate {
         guard let categoryCell = cell as? CategoryTableViewCell else { return }
         categoryCell.setCollectionViewDatasourceDelegate(datasourceDelegate: self, forRow: indexPath.row)
     }
-    
 }
 
 extension FeaturedViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 6
     }
@@ -57,6 +60,4 @@ extension FeaturedViewController: UICollectionViewDelegate, UICollectionViewData
         let movieCell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCollectionViewCell
         return movieCell ?? UICollectionViewCell()
     }
-    
-    
 }

@@ -15,20 +15,25 @@ class FeaturedMoviesViewModel {
     private let apiKey = "5ebb337b273ad9b825fef4a0ce371b65"
     private let secret = "e49ffa10429c0cd1"
     
+    weak var delegate: FeaturedMoviesViewModelDelegate?
+    
+    public var movies: [Photos] = [] {
+        didSet {
+            delegate?.didFetchMovies()
+        }
+    }
+    
     init(featuredViewController: FeaturedViewController) {
         self.featuredViewController = featuredViewController
+        delegate = featuredViewController
     }
     
     func fetchFeaturedMoviesFromMockServer(numberOfCategories: Int) {
-        
-        var featuredMovies: [[Movie]] = []
-        
         for i in 0...numberOfCategories {
-            getMoviesList(page: i) { (response) in
-                featuredMovies.append(response.photos.moviesList)
+            getMoviesList(page:i) { (response) in
+                self.movies.append(response.photos)
             }
         }
-    
     }
     
     private func getMoviesList(page: Int, completion: @escaping (_ featuredMovies: Response) -> Void) {
@@ -64,4 +69,8 @@ class FeaturedMoviesViewModel {
         let decoder = JSONDecoder()
         return decoder
     }
+}
+
+protocol FeaturedMoviesViewModelDelegate: class {
+    func didFetchMovies()
 }
