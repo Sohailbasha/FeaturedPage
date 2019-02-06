@@ -19,9 +19,11 @@ class FeaturedViewController: UIViewController {
         featuredMoviesViewModel = FeaturedMoviesViewModel(featuredViewController: self)
         featuredMoviesViewModel.fetchFeaturedMoviesFromMockServer(numberOfCategories: 4)
 
+        self.view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.1215686275, blue: 0.1333333333, alpha: 1)
+        
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
-        categoriesTableView.backgroundColor = .blue
+        categoriesTableView.backgroundColor = .clear
     }
 }
 
@@ -47,6 +49,7 @@ extension FeaturedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let categoryCell = cell as? CategoryTableViewCell else { return }
+        categoryCell.backgroundColor = .clear
         categoryCell.setCollectionViewDatasourceDelegate(datasourceDelegate: self, forRow: indexPath.row)
     }
 }
